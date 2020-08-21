@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nomeCompleto;
     private String email;
     private String nomeUsuario;
@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(long id, String nomeCompleto, String email, String nomeUsuario, String senha, String telefone) {
+    public Usuario(Long id, String nomeCompleto, String email, String nomeUsuario, String senha, String telefone) {
         super();
         this.id = id;
         this.nomeCompleto = nomeCompleto;
@@ -35,11 +35,11 @@ public class Usuario implements Serializable {
         this.telefone = telefone;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -88,7 +88,7 @@ public class Usuario implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return id == usuario.id;
+        return Objects.equals(id, usuario.id);
     }
 
     @Override
