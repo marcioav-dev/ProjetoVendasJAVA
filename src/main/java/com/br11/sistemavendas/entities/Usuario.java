@@ -1,10 +1,11 @@
 package com.br11.sistemavendas.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +21,10 @@ public class Usuario implements Serializable {
     private String nomeUsuario;
     private String senha;
     private String telefone;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
 
     public Usuario(){
 
@@ -81,6 +86,11 @@ public class Usuario implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
 
     @Override
