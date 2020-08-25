@@ -88,7 +88,7 @@ public class Produto implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return Objects.equals(id, produto.id);
+        return id.equals(produto.id);
     }
 
     @Override

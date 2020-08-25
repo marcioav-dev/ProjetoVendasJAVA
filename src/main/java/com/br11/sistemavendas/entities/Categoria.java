@@ -56,7 +56,7 @@ public class Categoria implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Categoria categoria = (Categoria) o;
-        return Objects.equals(id, categoria.id);
+        return id.equals(categoria.id);
     }
 
     @Override

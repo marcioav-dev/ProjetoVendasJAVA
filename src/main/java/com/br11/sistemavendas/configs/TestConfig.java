@@ -1,14 +1,8 @@
 package com.br11.sistemavendas.configs;
 
-import com.br11.sistemavendas.entities.Categoria;
-import com.br11.sistemavendas.entities.Pedido;
-import com.br11.sistemavendas.entities.Produto;
-import com.br11.sistemavendas.entities.Usuario;
+import com.br11.sistemavendas.entities.*;
 import com.br11.sistemavendas.enums.PedidoStatus;
-import com.br11.sistemavendas.repositories.CategoriaRepository;
-import com.br11.sistemavendas.repositories.PedidoRepository;
-import com.br11.sistemavendas.repositories.ProdutoRepository;
-import com.br11.sistemavendas.repositories.UsuarioRepository;
+import com.br11.sistemavendas.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +24,8 @@ public class TestConfig implements CommandLineRunner {
     private CategoriaRepository categoriaRepository;
     @Autowired
     private ProdutoRepository produtoRepository;
+    @Autowired
+    private PedidoItemRepository pedidoItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -75,6 +71,19 @@ public class TestConfig implements CommandLineRunner {
         produto8.getCategorias().add(categoria4);
 
         produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8));
+
+        PedidoItem pedidoItem1 = new PedidoItem(pedido1, produto1, 1, produto1.getValorUn());
+        PedidoItem pedidoItem2 = new PedidoItem(pedido1, produto3, 1, produto1.getValorUn());
+        PedidoItem pedidoItem3 = new PedidoItem(pedido1, produto8, 2, produto1.getValorUn());
+        PedidoItem pedidoItem4 = new PedidoItem(pedido2, produto2, 10, produto1.getValorUn());
+        PedidoItem pedidoItem5 = new PedidoItem(pedido3, produto4, 2, produto1.getValorUn());
+        PedidoItem pedidoItem6 = new PedidoItem(pedido4, produto5, 1, produto1.getValorUn());
+        PedidoItem pedidoItem7 = new PedidoItem(pedido5, produto6, 2, produto1.getValorUn());
+        PedidoItem pedidoItem8 = new PedidoItem(pedido6, produto7, 1, produto1.getValorUn());
+        PedidoItem pedidoItem9 = new PedidoItem(pedido7, produto2, 6, produto1.getValorUn());
+        PedidoItem pedidoItem10 = new PedidoItem(pedido7, produto7, 1, produto1.getValorUn());
+
+        pedidoItemRepository.saveAll(Arrays.asList(pedidoItem1, pedidoItem2, pedidoItem3, pedidoItem4, pedidoItem5, pedidoItem6, pedidoItem7, pedidoItem8, pedidoItem9, pedidoItem10));
 
     }
 }

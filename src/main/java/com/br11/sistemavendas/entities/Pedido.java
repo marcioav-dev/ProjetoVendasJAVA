@@ -2,12 +2,13 @@ package com.br11.sistemavendas.entities;
 
 import com.br11.sistemavendas.enums.PedidoStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Pedido implements Serializable {
@@ -23,6 +24,8 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Usuario cliente;
+    @OneToMany(mappedBy = "id.pedido")
+    private Set<PedidoItem> itens = new HashSet<>();
 
     public Pedido(){
 
@@ -69,12 +72,16 @@ public class Pedido implements Serializable {
         this.cliente = cliente;
     }
 
+    public Set<PedidoItem> getItens(){
+        return itens;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pedido pedido = (Pedido) o;
-        return Objects.equals(id, pedido.id);
+        return id.equals(pedido.id);
     }
 
     @Override
