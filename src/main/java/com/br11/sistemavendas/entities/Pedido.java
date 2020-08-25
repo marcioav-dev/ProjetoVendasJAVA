@@ -17,12 +17,9 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant dataHora;
-
     private Integer status;
-
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Usuario cliente;

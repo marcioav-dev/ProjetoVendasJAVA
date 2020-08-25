@@ -1,8 +1,10 @@
 package com.br11.sistemavendas.configs;
 
+import com.br11.sistemavendas.entities.Categoria;
 import com.br11.sistemavendas.entities.Pedido;
 import com.br11.sistemavendas.entities.Usuario;
 import com.br11.sistemavendas.enums.PedidoStatus;
+import com.br11.sistemavendas.repositories.CategoriaRepository;
 import com.br11.sistemavendas.repositories.PedidoRepository;
 import com.br11.sistemavendas.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class TestConfig implements CommandLineRunner {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private PedidoRepository pedidoRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,7 +39,13 @@ public class TestConfig implements CommandLineRunner {
         Pedido pedido6 = new Pedido(null, Instant.parse("2020-08-24T16:50:00Z"), PedidoStatus.PGTO_ACEITO, user1);
         Pedido pedido7 = new Pedido(null, Instant.parse("2020-08-24T16:53:00Z"), PedidoStatus.AGUARDANDO, user2);
 
+        Categoria categoria1 = new Categoria(null, "Bebidas");
+        Categoria categoria2 = new Categoria(null, "Importados");
+        Categoria categoria3 = new Categoria(null, "Comidas");
+        Categoria categoria4 = new Categoria(null, "SobreMesas");
+
         usuarioRepository.saveAll(Arrays.asList(user1, user2));
         pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2, pedido3, pedido4, pedido5, pedido6, pedido7));
+        categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4));
     }
 }
