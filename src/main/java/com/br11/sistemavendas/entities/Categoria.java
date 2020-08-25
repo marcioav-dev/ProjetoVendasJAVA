@@ -1,9 +1,8 @@
 package com.br11.sistemavendas.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -18,6 +17,9 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categorias")
     private Set<Produto> produtos = new HashSet<Produto>();
 
     public Categoria(){

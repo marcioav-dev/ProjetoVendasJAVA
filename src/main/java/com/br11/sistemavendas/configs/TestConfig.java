@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Configuration
@@ -55,10 +56,25 @@ public class TestConfig implements CommandLineRunner {
         Produto produto5 = new Produto(null, "Jack Daniels", "Wiskhy importado", 120.0, "notFound");
         Produto produto6 = new Produto(null, "Tanqueray", "Gim Importado", 99.9, "notFound");
         Produto produto7 = new Produto(null, "Batata Frita", "Porção de batata", 22.0, "notFound");
+        Produto produto8 = new Produto(null, "Pudim", "Pudim de Leite", 6.0, "notFound");
 
         usuarioRepository.saveAll(Arrays.asList(user1, user2));
         pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2, pedido3, pedido4, pedido5, pedido6, pedido7));
         categoriaRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4));
-        produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6, produto7));
+        produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8));
+
+        produto1.getCategorias().add(categoria1);
+        produto2.getCategorias().add(categoria1);
+        produto3.getCategorias().add(categoria3);
+        produto4.getCategorias().add(categoria1);
+        produto5.getCategorias().add(categoria1);
+        produto5.getCategorias().add(categoria2);
+        produto6.getCategorias().add(categoria1);
+        produto6.getCategorias().add(categoria2);
+        produto7.getCategorias().add(categoria3);
+        produto8.getCategorias().add(categoria4);
+
+        produtoRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8));
+
     }
 }

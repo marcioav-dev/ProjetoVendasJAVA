@@ -1,9 +1,8 @@
 package com.br11.sistemavendas.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -22,6 +21,10 @@ public class Produto implements Serializable {
     private Double valorUn;
     private String imgUrl;
 
+    @ManyToMany
+    @JoinTable(name = "produto_categoria",
+            joinColumns = @JoinColumn(name = "produto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private Set<Categoria> categorias = new HashSet<>();
 
     public Produto(){
