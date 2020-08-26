@@ -74,4 +74,8 @@ public class PedidoItem implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public Double getSubTotal(){
+        return valor * qtde;
+    }
 }
