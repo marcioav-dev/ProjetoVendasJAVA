@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Service
 public class UsuarioService {
@@ -22,5 +21,9 @@ public class UsuarioService {
     public Usuario buscaPorId(Long id){
        Optional<Usuario> obj = usuarioRepository.findById(id);
        return obj.get();
+    }
+
+    public Usuario inserir(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 }
