@@ -1,16 +1,13 @@
 package com.br11.sistemavendas.resources;
 
 import com.br11.sistemavendas.entities.Produto;
-import com.br11.sistemavendas.entities.Usuario;
 import com.br11.sistemavendas.services.ProdutoService;
-import com.br11.sistemavendas.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,4 +28,24 @@ public class ProdutoResource {
         Produto obj = service.buscaPorId(id);
         return ResponseEntity.ok().body(obj);
     }
+
+    @PostMapping
+    public ResponseEntity<Produto> inserir(@RequestBody Produto produto){
+        produto = service.inserir(produto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(produto.getId()).toUri();
+        return ResponseEntity.created(uri).body(produto);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        service.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id, @RequestBody Produto produto){
+        produto = service.atualizar(id, produto);
+        return ResponseEntity.ok().body(produto);
+    }
+
 }

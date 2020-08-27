@@ -19,6 +19,7 @@ public class Produto implements Serializable {
     private String nome;
     private String descricao;
     private Double valorUn;
+    private int qtdeEstoque;
     private String imgUrl;
 
     @ManyToMany
@@ -34,11 +35,12 @@ public class Produto implements Serializable {
 
     }
 
-    public Produto(Long id, String nome, String descricao, Double valorUn, String imgUrl) {
+    public Produto(Long id, String nome, String descricao, Double valorUn, int qtdeEstoque, String imgUrl) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.valorUn = valorUn;
+        this.qtdeEstoque = qtdeEstoque;
         this.imgUrl = imgUrl;
     }
 
@@ -72,6 +74,14 @@ public class Produto implements Serializable {
 
     public void setValorUn(Double valorUn) {
         this.valorUn = valorUn;
+    }
+
+    public Integer getQtdeEstoque() {
+        return qtdeEstoque;
+    }
+
+    public void setQtdeEstoque(int qtdeEstoque) {
+        this.qtdeEstoque = qtdeEstoque;
     }
 
     public String getImgUrl() {

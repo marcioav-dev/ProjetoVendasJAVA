@@ -45,14 +45,14 @@ public class TestConfig implements CommandLineRunner {
         Categoria categoria3 = new Categoria(null, "Comidas");
         Categoria categoria4 = new Categoria(null, "SobreMesas");
 
-        Produto produto1 = new Produto(null, "CocaCola Lata", "Bebida feita de cola em lata", 4.0, "notFound");
-        Produto produto2 = new Produto(null, "Heineken 600", "Cerveja tipo Lagger", 11.0, "notFound");
-        Produto produto3 = new Produto(null, "Espetinho de File", "Melhor Filé do Brasil", 12.5, "notFound");
-        Produto produto4 = new Produto(null, "Guaraná Antártica Lata", "Bebida feita de guaraná em lata", 4.0, "notFound");
-        Produto produto5 = new Produto(null, "Jack Daniels", "Wiskhy importado", 120.0, "notFound");
-        Produto produto6 = new Produto(null, "Tanqueray", "Gim Importado", 99.9, "notFound");
-        Produto produto7 = new Produto(null, "Batata Frita", "Porção de batata", 22.0, "notFound");
-        Produto produto8 = new Produto(null, "Pudim", "Pudim de Leite", 6.0, "notFound");
+        Produto produto1 = new Produto(null, "CocaCola Lata", "Bebida feita de cola em lata", 4.0, 25, "notFound");
+        Produto produto2 = new Produto(null, "Heineken 600", "Cerveja tipo Lagger", 11.0, 24, "notFound");
+        Produto produto3 = new Produto(null, "Espetinho de File", "Melhor Filé do Brasil", 12.5, 2, "notFound");
+        Produto produto4 = new Produto(null, "Guaraná Antártica Lata", "Bebida feita de guaraná em lata", 4.0, 10, "notFound");
+        Produto produto5 = new Produto(null, "Jack Daniels", "Wiskhy importado", 120.0, 3, "notFound");
+        Produto produto6 = new Produto(null, "Tanqueray", "Gim Importado", 99.9, 2, "notFound");
+        Produto produto7 = new Produto(null, "Batata Frita", "Porção de batata", 22.0, 1, "notFound");
+        Produto produto8 = new Produto(null, "Pudim", "Pudim de Leite", 6.0, 2, "notFound");
 
         usuarioRepository.saveAll(Arrays.asList(user1, user2));
         pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2, pedido3, pedido4, pedido5, pedido6, pedido7));
